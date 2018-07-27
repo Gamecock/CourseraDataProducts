@@ -1,0 +1,28 @@
+---
+title: "Plotly Example"
+author: "Mike Finch"
+date: "7/26/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Ozone in NYC
+
+
+```{r }
+suppressWarnings(suppressPackageStartupMessages(library(plotly)))
+suppressWarnings(suppressPackageStartupMessages(library(tidyr)))
+suppressWarnings(suppressPackageStartupMessages(library(plyr)))
+
+data("airquality")
+airquality <- filter(airquality, !is.na(Ozone))
+airquality$Month <- mapvalues( airquality$Month, from = c(5:9), to =  c("May", "June", "July", "August",  "September") )
+
+plot_ly(airquality, x = ~Temp, z = ~Ozone, y = ~Wind, type = "scatter3d", mode = "markers", color = ~factor(Month))
+
+```
+
