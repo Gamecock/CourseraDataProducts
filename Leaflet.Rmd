@@ -1,0 +1,22 @@
+---
+title: "Leaflet"
+author: "Mike Finch"
+date: "7/23/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Including Plots
+
+```{r pressure}
+suppressWarnings(suppressPackageStartupMessages(library(leaflet)))
+suppressWarnings(suppressPackageStartupMessages(library(sp)))
+data("breweries91")
+brew <- as.data.frame(breweries91)
+
+my_map <- leaflet() %>% addTiles() %>% addMarkers(brew$longitude, brew$latitude, popup = brew$web, clusterOptions = markerClusterOptions())
+my_map
+```
