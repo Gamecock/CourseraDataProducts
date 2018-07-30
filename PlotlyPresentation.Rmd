@@ -1,30 +1,27 @@
 ---
-title: "Plotly Example"
+title: "Plotly Presentation"
 author: "Mike Finch"
-date: "7/26/2018"
-output: html_document
+date: "7/29/2018"
+output: slidy_presentation
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
+knitr::opts_chunk$set(echo = FALSE)
+suppressWarnings(suppressPackageStartupMessages(library(plotly)))
+suppressWarnings(suppressPackageStartupMessages(library(tidyr)))
+suppressWarnings(suppressPackageStartupMessages(library(plyr)))
+data("airquality")
 ```
 
 ## Ozone in NYC
 
 
-```{r }
-suppressWarnings(suppressPackageStartupMessages(library(plotly)))
-suppressWarnings(suppressPackageStartupMessages(library(tidyr)))
-suppressWarnings(suppressPackageStartupMessages(library(plyr)))
+```{r plot }
 
-data("airquality")
-airquality <- filter(airquality, !is.na(Ozone))
+suppressWarnings(airquality <- filter(airquality, !is.na(Ozone))) #package `bindrcpp`
 airquality$Month <- mapvalues( airquality$Month, from = c(5:9), to =  c("May", "June", "July", "August",  "September") )
 
 #Put months in calendar order
 airquality$Month <- factor(airquality$Month, levels = c("May", "June", "July", "August",  "September"))
 plot_ly(airquality, x = ~Temp, z = ~Ozone, y = ~Wind, type = "scatter3d", mode = "markers", color = ~factor(Month))
-
 ```
-
