@@ -1,0 +1,47 @@
+---
+title: "MT Cars Shiny Pitch"
+author: "Mike Finch"
+date: "7/30/2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+```
+
+## Overview
+
+This is the manual for an application that can be found [here](https://gamecock.shinyapps.io/CourseraHomework/), with source in [Github](https://github.com/Gamecock/CourseraDataProducts).
+The application provides various ways of looking at the mtcars dataset.
+
+
+>The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+The y axis is fixed at MPG, however the x-axis color and marker can be selected from a number of other variables.
+
+## Sample Plot
+
+```{r pressure}
+data("mtcars")
+g <- ggplot( data = mtcars, y = mpg, x = disp, aes( disp, mpg)) + geom_point()
+g
+```
+
+
+## Color and Marker Choices
+
+- Cylinders(cyl)
+- V or Straight engine(vs, 0 = V, 1 = Straight)
+- Automatic or Manual Transmission(am, 0 = Automatic, 1 = Manual)
+- Number of Forward Gears(gear)
+- Number of Carburators(carb)
+
+## X-axis Choices
+
+- Displacement(disp)
+- Horsepower(hp)
+- 1/4 Mile Time(qsec)
+- Weight(wt)
+
+

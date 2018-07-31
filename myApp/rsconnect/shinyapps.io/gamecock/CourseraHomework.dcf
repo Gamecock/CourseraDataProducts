@@ -1,0 +1,12 @@
+name: CourseraHomework
+title: CourseraHomework
+username:
+account: gamecock
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 392272
+bundleId: 1508333
+url: https://gamecock.shinyapps.io/CourseraHomework/
+when: 1533000107.13599
+asMultiple: FALSE
+asStatic: FALSE
